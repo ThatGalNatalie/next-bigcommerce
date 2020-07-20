@@ -14,6 +14,5 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 
 # View It Live 🚀
-next-bigcommerce.vercel.app
 
 [next-bigcommerce.vercel.app](https://next-bigcommerce.vercel.app/)
