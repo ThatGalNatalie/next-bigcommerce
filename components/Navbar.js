@@ -1,18 +1,25 @@
+import Link from 'next/link';
+
 function Navbar() {
   return (
     <div>
       <ul className='navigation'>
         <li>
-          <a href='#'>About</a>
+          <Link href='/'>
+            <a href='#'>Home</a>
+          </Link>
         </li>
+        <Link href='/about'>
+          <li>
+            <a href='#'>About</a>
+          </li>
+        </Link>
 
-        <li>
-          <a href='#'>Contact</a>
-        </li>
-
-        <li>
-          <a href='#'>Cart</a>
-        </li>
+        <Link href='/'>
+          <li>
+            <a href='#'>Cart</a>
+          </li>
+        </Link>
       </ul>
 
       <style jsx>{`

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 function ProductList({ data }) {
   const allProducts = data?.site?.products?.edges ?? [];
   return (
@@ -13,16 +15,31 @@ function ProductList({ data }) {
         } = item.node;
         const { url } = images.edges[0].node;
         const { value, currencyCode } = prices.price;
-
+        const productPath = `/products${path}`;
         return (
-          <div className='card' key={entityId}>
-            <img src={url} alt={name} />
-            <h1>{name}</h1>
-            <p className='price'>${value}</p>
-            <p>{plainTextDescription}</p>
-            <p>
-              <button>Add to Cart</button>
-            </p>
+          <div key={entityId}>
+            <Link
+              href={{
+                pathname: '/products/[id]',
+                query: {
+                  name,
+                  url,
+                  value,
+                  plainTextDescription,
+                },
+              }}
+              as={productPath}
+            >
+              <div className='card'>
+                <img src={url} alt={name} />
+                <h1>{name}</h1>
+                <p className='price'>${value}</p>
+                <p>{plainTextDescription}</p>
+                <p>
+                  <button>Details</button>
+                </p>
+              </div>
+            </Link>
           </div>
         );
       })}
@@ -33,6 +50,10 @@ function ProductList({ data }) {
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           grid-gap: 30px;
           padding: 20px;
+        }
+
+        .product-container:hover {
+          cursor: pointer;
         }
         .card {
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);

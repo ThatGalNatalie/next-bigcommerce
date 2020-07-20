@@ -37,7 +37,6 @@ const GET_PRODUCTS = gql`
 
 function Products() {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
-
   if (loading) return <p>Loading...</p>;
   if (error)
     return <p>Oh no! We ran into an error while fetching the products :(</p>;
@@ -47,10 +46,6 @@ function Products() {
       <section className='products-container'>
         <ProductList data={data} />
       </section>
-      {/* <style jsx>{`
-       
-        }
-      `}</style> */}
     </div>
   );
 }
