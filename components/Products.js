@@ -39,7 +39,13 @@ function Products() {
   const { loading, error, data } = useQuery(GET_PRODUCTS);
   if (loading) return <p>Loading...</p>;
   if (error)
-    return <p>Oh no! We ran into an error while fetching the products :(</p>;
+    return (
+      <p>
+        Oh no! We ran into an error while fetching the products while in
+        production (cors error). Please view this project on develop at
+        https://github.com/ThatGalNatalie/next-bigcommerce:(
+      </p>
+    );
 
   return (
     <div>
